@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Button } from 'antd';
 
 function ChangeLanguage() {
   const { i18n } = useTranslation();
@@ -8,12 +9,8 @@ function ChangeLanguage() {
   };
   return (
     <div>
-      <button type="button" onClick={() => changeLanguage('tr')}>
-        tr
-      </button>
-      <button type="button" onClick={() => changeLanguage('en')}>
-        en
-      </button>
+      <Button onClick={() => changeLanguage('tr')}>tr</Button>
+      <Button onClick={() => changeLanguage('en')}>en</Button>
     </div>
   );
 }
