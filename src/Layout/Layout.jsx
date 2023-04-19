@@ -1,40 +1,105 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { TeamOutlined, UserOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme } from 'antd';
 import ChangeLanguage from '../component/changeLang';
 
-function Layout() {
+const { Header, Content, Footer, Sider } = Layout;
+// const items = [
+//   UserOutlined,
+//   VideoCameraOutlined,
+//   UploadOutlined,
+//   BarChartOutlined,
+//   CloudOutlined,
+//   AppstoreOutlined,
+//   TeamOutlined,
+//   ShopOutlined,
+// ].map((icon, index) => ({
+//   key: String(index + 1),
+//   icon: React.createElement(icon),
+//   label: `nav ${index + 1}`,
+// }));
+
+const menuItems = [
+  {
+    key: 0,
+    icon: React.createElement(UserOutlined),
+    label: <Link to="/about"> About </Link>,
+  },
+  {
+    key: 1,
+    icon: React.createElement(TeamOutlined),
+    label: <Link to="/"> Home </Link>,
+  },
+];
+
+function LayoutComp() {
   const { i18n } = useTranslation();
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <div>
-      {/* A "layout route" is a good place to put markup you want to
-            share across all the pages on your site, like navigation. */}
-      <nav>
-        <ChangeLanguage />
-        <ul>
-          <li>
-            <Link to="/">{i18n.t('home')}</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/nothing-here">Nothing Here</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <hr />
-
-      {/* An <Outlet> renders whatever child route is currently active,
-            so you can think about this <Outlet> as a placeholder for
-            the child routes we defined above. */}
-      <Outlet />
-    </div>
+    <Layout hasSider>
+      <Sider
+        style={{
+          overflow: 'auto',
+          height: '100vh',
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          bottom: 0,
+        }}
+      >
+        <div
+          style={{
+            height: 32,
+            margin: 16,
+            background: 'rgba(255, 255, 255, 0.2)',
+          }}
+        />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={menuItems} />
+      </Sider>
+      <Layout
+        className="site-layout"
+        style={{
+          marginLeft: 200,
+        }}
+      >
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+          }}
+        >
+          <ChangeLanguage />
+        </Header>
+        <Content
+          style={{
+            margin: '24px 16px 0',
+            overflow: 'initial',
+          }}
+        >
+          <div
+            style={{
+              padding: 24,
+              textAlign: 'center',
+              background: colorBgContainer,
+            }}
+          >
+            <Outlet />
+          </div>
+        </Content>
+        <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          {i18n.t('hello')}
+        </Footer>
+      </Layout>
+    </Layout>
   );
 }
 
-export default Layout;
+export default LayoutComp;
