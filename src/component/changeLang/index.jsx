@@ -9,8 +9,12 @@ function ChangeLanguage() {
   };
   return (
     <div>
-      <Button onClick={() => changeLanguage('tr')}>tr</Button>
-      <Button onClick={() => changeLanguage('en')}>en</Button>
+      <Button type="button" onClick={() => changeLanguage('tr')}>
+        tr
+      </Button>
+      <Button type="button" onClick={() => changeLanguage('en')}>
+        en
+      </Button>
     </div>
   );
 }

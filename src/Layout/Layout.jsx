@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { TeamOutlined, UserOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import {
+  HomeOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  SnippetsOutlined,
+  UnorderedListOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+import { Button, Layout, Menu, theme } from 'antd';
 import ChangeLanguage from '../component/changeLang';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -24,17 +31,28 @@ const { Header, Content, Footer, Sider } = Layout;
 const menuItems = [
   {
     key: 0,
-    icon: React.createElement(UserOutlined),
-    label: <Link to="/about"> About </Link>,
+    icon: React.createElement(HomeOutlined),
+    label: <Link to="/"> Anasayfa </Link>,
   },
   {
     key: 1,
-    icon: React.createElement(TeamOutlined),
-    label: <Link to="/"> Home </Link>,
+    icon: React.createElement(UnorderedListOutlined),
+    label: <Link to="/navbar"> Navbar </Link>,
+  },
+  {
+    key: 2,
+    icon: React.createElement(SnippetsOutlined),
+    label: <Link to="/pages"> Sayfalar </Link>,
+  },
+  {
+    key: 3,
+    icon: React.createElement(UserOutlined),
+    label: <Link to="/users"> Kullanıcılar </Link>,
   },
 ];
 
 function LayoutComp() {
+  const [collapsed, setCollapsed] = useState(false);
   const { i18n } = useTranslation();
   const {
     token: { colorBgContainer },
@@ -42,6 +60,9 @@ function LayoutComp() {
   return (
     <Layout hasSider>
       <Sider
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
         style={{
           overflow: 'auto',
           height: '100vh',
@@ -72,7 +93,19 @@ function LayoutComp() {
             background: colorBgContainer,
           }}
         >
-          <ChangeLanguage />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: '16px',
+                width: 64,
+                height: 64,
+              }}
+            />
+            <ChangeLanguage />
+          </div>
         </Header>
         <Content
           style={{
@@ -95,7 +128,7 @@ function LayoutComp() {
             textAlign: 'center',
           }}
         >
-          {i18n.t('hello')}
+          {i18n.t('footer')}
         </Footer>
       </Layout>
     </Layout>
