@@ -3,7 +3,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import Home from './pages/Home';
 import NoMatch from './pages/NotFound';
-import About from './pages/About';
+import Navbar from './pages/Navbar';
+import Pages from './pages/Pages';
+import Users from './pages/User';
 
 const router = createBrowserRouter([
   {
@@ -15,9 +17,19 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'about',
+        path: 'navbar',
         // Single route in lazy file
-        element: <About />,
+        element: <Navbar />,
+      },
+      {
+        path: 'pages',
+        // Single route in lazy file
+        element: <Pages />,
+      },
+      {
+        path: 'users',
+        // Single route in lazy file
+        element: <Users />,
       },
       {
         path: '*',

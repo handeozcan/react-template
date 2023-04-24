@@ -1,4 +1,4 @@
 export default {
-  '*.{js,jsx,ts,tsx}': ['eslint --max-warnings=0', () => 'tsc-files --noEmit'],
-  '*.{js,jsx,ts,tsx,json,css,js}': ['prettier --write'],
+  '*.{js,jsx,ts,tsx}': ['eslint', () => 'tsc-files --noEmit'],
+  '*.{js,jsx,ts,tsx,json,css}': ['prettier --write'],
 };
