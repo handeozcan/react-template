@@ -84,7 +84,7 @@ function LayoutComp() {
       <Layout
         className="site-layout"
         style={{
-          marginLeft: 200,
+          marginLeft: collapsed ? '80px' : '200px',
         }}
       >
         <Header
@@ -100,8 +100,7 @@ function LayoutComp() {
               onClick={() => setCollapsed(!collapsed)}
               style={{
                 fontSize: '16px',
-                width: 64,
-                height: 64,
+                marginLeft: 20,
               }}
             />
             <ChangeLanguage />
