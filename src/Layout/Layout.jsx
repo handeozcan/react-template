@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
+  CaretRightOutlined,
   HomeOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -32,23 +33,52 @@ const menuItems = [
   {
     key: 0,
     icon: React.createElement(HomeOutlined),
-    label: <Link to="/"> Anasayfa </Link>,
+    label: 'Anasayfa',
+    children: [
+      {
+        key: 1,
+        icon: React.createElement(CaretRightOutlined),
+        label: <Link to="/home/news"> Haberler </Link>,
+      },
+      {
+        key: 2,
+        icon: React.createElement(CaretRightOutlined),
+        label: <Link to="/home/main-animation"> Animasyon </Link>,
+      },
+    ],
   },
   {
-    key: 1,
+    key: 3,
     icon: React.createElement(UnorderedListOutlined),
     label: <Link to="/navbar"> Navbar </Link>,
   },
   {
-    key: 2,
+    key: 4,
     icon: React.createElement(SnippetsOutlined),
     label: <Link to="/pages"> Sayfalar </Link>,
   },
   {
-    key: 3,
+    key: 5,
     icon: React.createElement(UserOutlined),
     label: <Link to="/users"> Kullanıcılar </Link>,
   },
+  // {
+  //   key: 6,
+  //   icon: React.createElement(UserOutlined),
+  //   label: 'Naber',
+  //   children: [
+  //     {
+  //       key: 7,
+  //       icon: React.createElement(UserOutlined),
+  //       label: <Link to="/naber/hande-1"> Hande 1 </Link>,
+  //     },
+  //     {
+  //       key: 8,
+  //       icon: React.createElement(UserOutlined),
+  //       label: <Link to="/naber/hande-2"> Hande 2 </Link>,
+  //     },
+  //   ],
+  // },
 ];
 
 function LayoutComp() {
@@ -127,7 +157,7 @@ function LayoutComp() {
             textAlign: 'center',
           }}
         >
-          {i18n.t('footer')}
+          {i18n.t('global.footer')}
         </Footer>
       </Layout>
     </Layout>

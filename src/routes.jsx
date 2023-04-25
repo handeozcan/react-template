@@ -6,6 +6,8 @@ import NoMatch from './pages/NotFound';
 import Navbar from './pages/Navbar';
 import Pages from './pages/Pages';
 import Users from './pages/User';
+import News from './pages/News';
+import MainAnimation from './pages/MainAnimation';
 
 const router = createBrowserRouter([
   {
@@ -17,20 +19,45 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: 'home',
+        children: [
+          {
+            path: 'news',
+            element: <News />,
+          },
+
+          {
+            path: 'main-animation',
+            element: <MainAnimation />,
+          },
+        ],
+      },
+      {
         path: 'navbar',
-        // Single route in lazy file
         element: <Navbar />,
       },
       {
         path: 'pages',
-        // Single route in lazy file
         element: <Pages />,
       },
       {
         path: 'users',
-        // Single route in lazy file
         element: <Users />,
       },
+      // {
+      //   path: 'naber',
+      //   children: [
+      //     {
+      //       path: 'hande-1',
+      //       element: <Users />,
+      //     },
+
+      //     {
+      //       path: 'hande-2',
+      //       element: <Pages />,
+      //     },
+      //   ],
+      // },
       {
         path: '*',
         element: <NoMatch />,

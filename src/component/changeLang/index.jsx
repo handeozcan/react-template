@@ -36,7 +36,7 @@ function ChangeLanguage() {
       <Dropdown trigger={['click']} menu={menuProps}>
         <Button>
           <Space>
-            Languages
+            {i18n.t('global.languages')}
             <DownOutlined />
           </Space>
         </Button>

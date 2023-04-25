@@ -1,4 +1,14 @@
 {
-  "footer": "Footerrr",
-  "home": "Home"
+  "global": {
+    "languages": "Languages",
+    "footer": "FooterEn"
+  },
+  "pages": {
+    "home": "Home",
+    "news": "News",
+    "mainAnimation": "Main Animation",
+    "navbar": "Navbar",
+    "pages": "Pages",
+    "users": "users"
+  }
 }

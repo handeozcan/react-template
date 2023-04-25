@@ -1,4 +1,14 @@
 {
-  "footer": "Footer",
-  "home": "Anasayfa"
+  "global": {
+    "languages": "Diller",
+    "footer": "Footer"
+  },
+  "pages": {
+    "home": "Anasayfa",
+    "news": "Haberler",
+    "mainAnimation": "Ana Animasyon",
+    "navbar": "Navbar",
+    "pages": "Sayfalar",
+    "users": "Kullanıcılar"
+  }
 }
