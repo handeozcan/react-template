@@ -8,6 +8,7 @@ import Pages from './pages/Pages';
 import Users from './pages/User';
 import News from './pages/News';
 import MainAnimation from './pages/MainAnimation';
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -44,25 +45,15 @@ const router = createBrowserRouter([
         path: 'users',
         element: <Users />,
       },
-      // {
-      //   path: 'naber',
-      //   children: [
-      //     {
-      //       path: 'hande-1',
-      //       element: <Users />,
-      //     },
-
-      //     {
-      //       path: 'hande-2',
-      //       element: <Pages />,
-      //     },
-      //   ],
-      // },
-      {
-        path: '*',
-        element: <NoMatch />,
-      },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '*',
+    element: <NoMatch />,
   },
 ]);
 

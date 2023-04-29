@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   CaretRightOutlined,
@@ -83,6 +83,17 @@ const menuItems = [
 
 function LayoutComp() {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem('userToken');
+  console.log(token, 'token');
+
+  useEffect(() => {
+    if (token === null) {
+      navigate('/login');
+    }
+  }, [token]);
+
   const { i18n } = useTranslation();
   const {
     token: { colorBgContainer },
@@ -109,7 +120,7 @@ function LayoutComp() {
             background: 'rgba(255, 255, 255, 0.2)',
           }}
         />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={menuItems} />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']} items={menuItems} />
       </Sider>
       <Layout
         className="site-layout"

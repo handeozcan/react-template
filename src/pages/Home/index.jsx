@@ -1,20 +1,14 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getCurrentUserInfo } from '../../features/user/userSlice';
+import React from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { getCurrentUserInfo } from '../../features/user/userSlice';
 
 function Home() {
-  const user = useSelector((state) => state.user.users);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCurrentUserInfo());
-  }, []);
-  return (
-    <div>
-      {user?.map((x) => (
-        <span key={x.id}>{x.title}</span>
-      ))}
-    </div>
-  );
+  // const user = useSelector((state) => state.user.users);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getCurrentUserInfo());
+  // }, []);
+  return <div>Logo</div>;
 }
 
 export default Home;
